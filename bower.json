@@ -1,0 +1,10 @@
+{
+    "name" : "Name of project here",
+    "version" : "0.0.1",
+    "dependencies" : {
+        "jquery" : ">=2.0.3",
+        "jasmine" : ">=1.3.1",
+        "modernizr" : ">=2.6.2"
+    },
+    "ignore" : []
+}
