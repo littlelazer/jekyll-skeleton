@@ -1,1 +1,1 @@
-exclude: [sass, test]
+exclude: [sass, src, test]
