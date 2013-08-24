@@ -1,0 +1,12 @@
+{
+    "default": {
+        "bucket":       "s3bucketname",
+        "local_path":   "./_site",
+        "bucket_path":  "/"
+    },
+    "staging": {
+        "bucket":       "s3bucketname",
+        "local_path":   "./_site",
+        "bucket_path":  "/"
+    }
+}

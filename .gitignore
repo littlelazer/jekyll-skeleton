@@ -5,3 +5,4 @@ css/*
 js/*
 node_modules/*
 .sass-cache/*
+.aws
