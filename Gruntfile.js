@@ -38,31 +38,51 @@ module.exports = function(grunt) {
 
         concat : {
             options : {
-                banner: bannerContent
+                //banner: bannerContent
             },
-            target : {
-                src : ['src/**/*.js'],
-                dest : 'src/concat/' + name + '.js'
-            },
-            dev : {
-                src : ['src/**/*.js'],
-                dest : ['js/'  + name + '.min.js']
-            }
-        },
+            
+            dist : {
+                files : {
+                    'lib/vendor/vendor.js' : ['bower_components/jquery/jquery.js', 'bower_components/bootstrap/dist/js/bootstrap.js'],
+                    'lib/vendor/modernizr.js' : ['bower_components/modernizr/modernizr.js'],
+                    'js/main.js' : ['src/**/*.js'],
+                    'lib/vendor/vendor.css' : ['bower_components/bootstrap/dist/css/bootstrap.css']
+                    
 
-        bower : {
+                }
+            },
+
             dev : {
-                dest: 'js/vendor'
+                files : {
+                    'js/vendor/vendor.js' : ['bower_components/jquery/jquery.js', 'bower_components/bootstrap/dist/js/bootstrap.js'],
+                    'js/vendor/modernizr.js' : ['js/vendor/modernizr.js'],
+                    'css/vendor/vendor.css' : ['bower_components/bootstrap/dist/css/bootstrap.css']
+                }
             }
         },
 
         uglify : {
             options : {
-                banner: bannerContent
+                //banner: bannerContent
             },
-            target : {
-                src : ['src/concat/*.js'],
-                dest : ['js/' + name + '.min.js']
+            dist : {
+                files : {
+                    'js/vendor/vendor.js' : 'lib/vendor/vendor.js',
+                    'js/vendor/modernizr.js' : 'lib/vendor/modernizr.js',
+                    'js/main.js' : 'js/main.js'
+                }
+            }
+        },
+
+        copy : {
+            options : {},
+            dist : {
+                expand: true,
+                cwd: 'bower_components/bootstrap/fonts/',
+                src: '**',
+                dest: 'fonts/',
+                flatten: false,
+                filter: 'isFile'
             }
         },
 
@@ -82,12 +102,12 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-karma');
-    grunt.loadNpmTasks('grunt-bower');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
-    grunt.registerTask('default', ['jshint', 'karma', 'sass', 'concat', 'uglify', 'bower']);
+    grunt.registerTask('default', ['jshint', 'karma', 'sass', 'concat:dist', 'uglify', 'copy']);
     grunt.registerTask('test', ['jshint', 'karma']);
-    grunt.registerTask('dev', ['jshint', 'karma', 'sass','concat:dev'])
+    grunt.registerTask('dev', ['jshint', 'karma', 'concat:dev', 'sass','concat:dev'])
 };
