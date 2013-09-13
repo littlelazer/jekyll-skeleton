@@ -50,7 +50,7 @@ module.exports = function(grunt) {
                     'lib/vendor/vendor.js' : ['bower_components/jquery/jquery.js', 'bower_components/bootstrap/dist/js/bootstrap.js'],
                     'lib/vendor/modernizr.js' : ['bower_components/modernizr/modernizr.js'],
                     'js/main.js' : ['src/**/*.js'],
-                    'lib/vendor/vendor.css' : ['bower_components/bootstrap/dist/css/bootstrap.css']
+                    'lib/vendor/vendor.css' : ['bower_components/bootstrap/dist/css/bootstrap.min.css']
                     
 
                 }
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
                 files : {
                     'js/vendor/vendor.js' : ['bower_components/jquery/jquery.js', 'bower_components/bootstrap/dist/js/bootstrap.js'],
                     'js/vendor/modernizr.js' : ['js/vendor/modernizr.js'],
-                    'css/vendor/vendor.css' : ['bower_components/bootstrap/dist/css/bootstrap.min.css']
+                    'css/vendor/vendor.css' : ['bower_components/bootstrap/dist/css/bootstrap.css']
                 }
             }
         },
@@ -81,12 +81,17 @@ module.exports = function(grunt) {
         copy : {
             options : {},
             dist : {
-                expand: true,
-                cwd: 'bower_components/bootstrap/fonts/',
-                src: '**',
-                dest: 'css/fonts/',
-                flatten: false,
-                filter: 'isFile'
+                files : [
+                    {
+                        expand: true,
+                        cwd: 'bower_components/bootstrap/fonts/',
+                        src: '**',
+                        dest: 'css/fonts/',
+                        flatten: false,
+                        filter: 'isFile'
+                    },
+                    {'css/vendor/vendor.css' : ['bower_components/bootstrap/dist/css/bootstrap.css']}
+                ]
             }
         },
 
@@ -111,7 +116,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
 
-    grunt.registerTask('default', ['jshint', 'karma', 'sass', 'concat:dist', 'uglify', 'copy']);
+    grunt.registerTask('default', ['sass', 'jshint', 'karma', 'concat:dist', 'uglify', 'copy']);
     grunt.registerTask('test', ['jshint', 'karma']);
-    grunt.registerTask('dev', ['jshint', 'karma', 'concat:dev', 'sass','concat:dev', 'copy']);
+    grunt.registerTask('dev', ['sass', 'jshint', 'karma', 'concat:dev', 'copy']);
 };

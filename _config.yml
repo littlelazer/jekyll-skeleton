@@ -1,1 +1,1 @@
-exclude: [sass, src, test, bower_components, lib, 'bower.json', 'Gemfile', 'Gemfile.lock', 'Gruntfile.js', 'package.json', 'requirements.txt', 'README.md', 'deploy.json']
+exclude: [sass, src, test, bower_components, node_modules, lib, 'bower.json', 'Gemfile', 'Gemfile.lock', 'Gruntfile.js', 'package.json', 'requirements.txt', 'README.md', 'deploy.json']
