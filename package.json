@@ -30,6 +30,7 @@
     "grunt-jekyll": "~0.3.9",
     "grunt-bower": "~0.6.1",
     "grunt-contrib-sass": "~0.5.0",
-    "grunt-cli": "~0.1.9"
+    "grunt-cli": "~0.1.9",
+    "grunt-contrib-copy": "~0.4.1"
   }
 }
