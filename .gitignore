@@ -6,3 +6,5 @@ js/*
 node_modules/*
 .sass-cache/*
 .aws
+lib/*
+fonts/*
