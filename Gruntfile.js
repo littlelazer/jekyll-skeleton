@@ -56,7 +56,7 @@ module.exports = function(grunt) {
                 files : {
                     'js/vendor/vendor.js' : ['bower_components/jquery/jquery.js', 'bower_components/bootstrap/dist/js/bootstrap.js'],
                     'js/vendor/modernizr.js' : ['js/vendor/modernizr.js'],
-                    'css/vendor/vendor.css' : ['bower_components/bootstrap/dist/css/bootstrap.css']
+                    'css/vendor/vendor.css' : ['bower_components/bootstrap/dist/css/bootstrap.min.css']
                 }
             }
         },
@@ -80,7 +80,7 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: 'bower_components/bootstrap/fonts/',
                 src: '**',
-                dest: 'fonts/',
+                dest: 'css/fonts/',
                 flatten: false,
                 filter: 'isFile'
             }
@@ -109,5 +109,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['jshint', 'karma', 'sass', 'concat:dist', 'uglify', 'copy']);
     grunt.registerTask('test', ['jshint', 'karma']);
-    grunt.registerTask('dev', ['jshint', 'karma', 'concat:dev', 'sass','concat:dev'])
+    grunt.registerTask('dev', ['jshint', 'karma', 'concat:dev', 'sass','concat:dev', 'copy']);
 };
