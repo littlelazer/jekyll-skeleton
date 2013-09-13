@@ -93,18 +93,6 @@ module.exports = function(grunt) {
                     {'css/vendor/vendor.css' : ['bower_components/bootstrap/dist/css/bootstrap.css']}
                 ]
             }
-        },
-
-        jekyll : {
-            options : {
-                serve : true
-            },
-            serve : {
-                options : {
-                    dest : '.jekyll',
-                    drafts : true
-                }
-            }
         }
 
     });
