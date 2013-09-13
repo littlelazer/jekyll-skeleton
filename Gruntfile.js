@@ -16,9 +16,13 @@ module.exports = function(grunt) {
         },
 
         karma : {
-            unit: {
+            dist: {
                 options: {
-                    files: ['test/**/*.js']
+                    files: ['test/**/*.js'],
+                    singleRun: true,
+                    browsers: ['Chrome', 'ChromeCanary', 'PhantomJS', 'Firefox', 'Safari'],
+                    basePath: '',
+                    frameworks: ['jasmine'],
                 },
             }
         },
