@@ -1,8 +1,6 @@
-Base Jekyll Install
-===================
+#Base Jekyll Install
 
-Instructions
-------------
+##Instructions
 1. clone repo
 2. bundle install
 3. pip install -r requirements.txt
@@ -10,18 +8,16 @@ Instructions
 5. bower install
 6. fun and $$$
 
-About
------
+## About
 The purpose of this is just to have a base [Jekyll](http://jekyllrb.com) install that you can clone and start using relatively quickly to build a static site, with most of the things you need already included and ready to go, so you can focus on the content and code instead of just getting everything set up.
 
-Folder Structure
-----------------
+## Folder Structure
 Your pages, posts, and images are the same as with any jekyll project.
 Your css goes in 'sass/'.
 Your javascript goes in 'src/'.
 Your javascript tests go in 'test/'.
 
-Don't put anything in 'js/' and 'css/'. There are in the .gitignore, and they get blown away each time by the grunt tasks. 
+You could, but you probably shouldn't put anything in 'js/' and 'css/'. If they're named the same as another file, they'll get blown away each time the grunt tasks run.
 
 ### Folders you don't need to pay attention to
 These are all included in the .gitignore file and excluded in _config.yml because they get generated when you run the install and grunt commands:
@@ -29,16 +25,13 @@ These are all included in the .gitignore file and excluded in _config.yml becaus
 - lib/
 - node_modules
 
-Bower Packages
---------------
+## Bower Packages
 - [jQuery](http://jquery.com)
 - [Modernizr](http://modernizr.com)
 - [Twitter Bootstrap](http://getbootstrap.com/)
 
-Grunt Tasks
------------
-There are several grunt tasks built in.
-
+## Grunt Tasks
+There are several grunt tasks built in:
 ### 'grunt' - prepare files for deployment
 - compiles everything in your '/sass' into '/css'
 - runs jshint on your js,
@@ -60,6 +53,5 @@ Runs jshint and all jasmine tests in 'test/'
 
 You can add and remove tasks as you like (just check the [grunt docs](http://gruntjs.com/getting-started)), as well as have [bower](http://bower.io) install additional dependencies. Just make sure you modify the tasks to copy/concat/minify the appropriate files from those packages
 
-Deployment
-----------
-You can also deploy your site to S3 using [d3ploy](https://github.com/dryan/d3ploy) (thanks [dryan](http://dryan.com/)!) by copying the .aws-sample file to .aws and add your AWS credentials. Check the d3ploy docs for more info.
+## Deployment
+You can easily deploy your site to S3 using [d3ploy](https://github.com/dryan/d3ploy) (thanks [dryan](http://dryan.com/)!) by copying the .aws-sample file to .aws and adding your AWS credentials. Check the d3ploy docs for more info.
