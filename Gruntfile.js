@@ -51,8 +51,6 @@ module.exports = function(grunt) {
                     'lib/vendor/modernizr.js' : ['bower_components/modernizr/modernizr.js'],
                     'js/main.js' : ['src/**/*.js'],
                     'lib/vendor/vendor.css' : ['bower_components/bootstrap/dist/css/bootstrap.min.css']
-                    
-
                 }
             },
 
@@ -61,6 +59,12 @@ module.exports = function(grunt) {
                     'js/vendor/vendor.js' : ['bower_components/jquery/jquery.js', 'bower_components/bootstrap/dist/js/bootstrap.js'],
                     'js/vendor/modernizr.js' : ['js/vendor/modernizr.js'],
                     'css/vendor/vendor.css' : ['bower_components/bootstrap/dist/css/bootstrap.css']
+                }
+            },
+
+            watch : {
+                files : {
+                    'js/main.js' : ['src/**/*.js'],
                 }
             }
         },
@@ -93,8 +97,22 @@ module.exports = function(grunt) {
                     {'css/vendor/vendor.css' : ['bower_components/bootstrap/dist/css/bootstrap.css']}
                 ]
             }
-        }
+        },
 
+        watch : {
+            css : {
+                files : ['sass/**/*.scss', 'sass/**/*.css'],
+                tasks : ['sass']
+            },
+            js : {
+                files : ['src/**/*.js'],
+                tasks : ['jshint', 'karma']
+            },
+            concat : {
+                files : ['src/**/*.js'],
+                tasks : ['concat:watch']
+            }
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -103,8 +121,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', ['sass', 'jshint', 'karma', 'concat:dist', 'uglify', 'copy']);
     grunt.registerTask('test', ['jshint', 'karma']);
     grunt.registerTask('dev', ['sass', 'jshint', 'karma', 'concat:dev', 'copy']);
+
+    grunt.event.on('watch', function(action, filepath, target) {
+        grunt.log.writeln(target + ': ' + filepath + ' has ' + action);
+    });
 };
